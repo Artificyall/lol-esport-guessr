@@ -1,12 +1,9 @@
-import Players from "./components/Players"
-import { players } from "./data/players"
+import { Main } from "./components/Main"
 
 const App: React.FC = () => {
   return (
     <>
-      <div className="flex flex-col items-center justify-center">
-        <Players players={players} />
-      </div>
+      <Main />
     </>
   )
 }
