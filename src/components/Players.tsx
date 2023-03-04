@@ -1,5 +1,5 @@
 import PlayerItem from "./PlayerItem"
-import { Player } from "./types"
+import { Player } from "../types"
 
 interface PlayersProps {
   players: Array<Player>

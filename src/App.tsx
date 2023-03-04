@@ -1,5 +1,5 @@
 import "./App.css"
-import Players from "./Players"
+import Players from "./components/Players"
 import { players } from "./data/players"
 
 const App: React.FC = () => {
