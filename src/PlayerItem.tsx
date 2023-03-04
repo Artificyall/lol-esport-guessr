@@ -1,7 +1,7 @@
-import { Player } from "./types";
+import { Player } from "./types"
 
 interface PlayerProps {
-  player: Player;
+  player: Player
 }
 
 const PlayerItem: React.FC<PlayerProps> = ({ player }) => {
@@ -16,7 +16,7 @@ const PlayerItem: React.FC<PlayerProps> = ({ player }) => {
         <p className="flex-1">{player.Country}</p>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default PlayerItem;
+export default PlayerItem
