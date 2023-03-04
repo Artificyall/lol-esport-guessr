@@ -1,22 +1,22 @@
-import { Player } from "./types"
+import { Player } from "./types";
 
 interface PlayerProps {
-  player: Player
+  player: Player;
 }
 
 const PlayerItem: React.FC<PlayerProps> = ({ player }) => {
   return (
     <>
       <div className="p-2 bg-zinc-800 hover:overflow-auto rounded-md flex flex-row cursor-pointer border border-gray-700 hover:border-gray-500">
-        <div className="flex-1">{player.Player}</div>
-        <div className="flex-1">{player.Name}</div>
-        <div className="flex-1">{player.Age}</div>
-        <div className="flex-1">{player.Role}</div>
-        <div className="flex-1">{player.Team}</div>
-        <div className="flex-1">{player.Country}</div>
+        <p className="flex-1">{player.Player}</p>
+        <p className="flex-1">{player.Name}</p>
+        <p className="flex-1">{player.Age}</p>
+        <p className="flex-1">{player.Role}</p>
+        <p className="flex-1">{player.Team}</p>
+        <p className="flex-1">{player.Country}</p>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default PlayerItem
+export default PlayerItem;
