@@ -1,7 +1,8 @@
-import Player from "./Player";
+import PlayerItem from "./PlayerItem"
+import { Player } from "./types"
 
 interface PlayersProps {
-  players: Player[];
+  players: Array<Player>
 }
 
 const Players: React.FC<PlayersProps> = ({ players }) => {
@@ -12,13 +13,13 @@ const Players: React.FC<PlayersProps> = ({ players }) => {
           (player) =>
             player.Player === "Hans Sama" && (
               <li className="m-4" key={player.Player}>
-                <Player player={player} />
+                <PlayerItem player={player} />
               </li>
             )
         )}
       </ul>
     </>
-  );
-};
+  )
+}
 
-export default Players;
+export default Players

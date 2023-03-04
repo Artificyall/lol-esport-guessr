@@ -1,17 +1,13 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
-import data from "../public/csvjson.json";
-import Players from "./Players";
-
-const playersData = data;
+import "./App.css"
+import Players from "./Players"
+import { players } from "./data/players"
 
 const App: React.FC = () => {
   return (
     <>
-      <Players players={playersData} />
+      <Players players={players} />
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App
