@@ -7,13 +7,13 @@ interface PlayerProps {
 const PlayerItem: React.FC<PlayerProps> = ({ player }) => {
   return (
     <>
-      <div className="p-2 bg-zinc-800 hover:overflow-auto rounded-md flex flex-row cursor-pointer border border-gray-700 hover:border-gray-500">
-        <p className="flex-1">{player.Player}</p>
-        <p className="flex-1">{player.Name}</p>
-        <p className="flex-1">{player.Age}</p>
-        <p className="flex-1">{player.Role}</p>
-        <p className="flex-1">{player.Team}</p>
-        <p className="flex-1">{player.Country}</p>
+      <div className="p-2 bg-zinc-800 hover:overflow-auto rounded-md flex flex-row justify-between cursor-pointer border border-gray-700 hover:border-gray-500">
+        <p>{player.Player}</p>
+        <p>{player.Name}</p>
+        <p>{player.Age}</p>
+        <p>{player.Role}</p>
+        <p>{player.Team}</p>
+        <p>{player.Country}</p>
       </div>
     </>
   )
