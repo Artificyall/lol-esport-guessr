@@ -39,7 +39,7 @@ export const PlayerInput: React.FC<PlayerInputProps> = ({
         (prevIndex) =>
           (prevIndex - 1 + filteredPlayers.length) % filteredPlayers.length
       )
-    } else if (event.key === "ArrowDown") {
+    } else if (event.key === "ArrowDown" || event.key === "Tab") {
       event.preventDefault()
       setActiveIndex((prevIndex) => (prevIndex + 1) % filteredPlayers.length)
     } else if (event.key === "Enter") {
