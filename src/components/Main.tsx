@@ -32,13 +32,16 @@ export const Main: React.FC = () => {
           setDidWin={setDidWin}
         />
         <div className="w-1/2 flex flex-col items-center justify-center">
-          {guesses.map((guess, i) => (
-            <Guess
-              key={i}
-              player={getPlayer(guess)}
-              correctGuess={correctGuess}
-            />
-          ))}
+          {guesses.map((guess, i) => {
+            console.log(guess)
+            return (
+              <Guess
+                key={i}
+                player={getPlayer(guess)}
+                correctGuess={correctGuess}
+              />
+            )
+          })}
         </div>
       </div>
     </>
