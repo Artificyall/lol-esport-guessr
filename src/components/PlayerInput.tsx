@@ -1,14 +1,21 @@
 import { players } from "../data/players"
 import { useState, useEffect } from "react"
+import { Player } from "../types"
 
 interface PlayerInputProps {
   guesses: Array<string>
+  didWin: boolean
+  correctGuess: Player
   setGuesses: (guesses: Array<string>) => void
+  setDidWin: (didWin: boolean) => void
 }
 
 export const PlayerInput: React.FC<PlayerInputProps> = ({
   guesses,
+  didWin,
+  correctGuess,
   setGuesses,
+  setDidWin,
 }) => {
   const [search, setSearch] = useState<string>("")
   const [activeIndex, setActiveIndex] = useState<number>(-1)
@@ -16,6 +23,7 @@ export const PlayerInput: React.FC<PlayerInputProps> = ({
 
   const addGuess = (player: string) => {
     if (guesses.includes(player)) return
+    if (player === correctGuess.Player) setDidWin(true)
     setGuesses([...guesses, player])
   }
 
@@ -34,11 +42,13 @@ export const PlayerInput: React.FC<PlayerInputProps> = ({
     } else if (event.key === "ArrowDown") {
       event.preventDefault()
       setActiveIndex((prevIndex) => (prevIndex + 1) % filteredPlayers.length)
-    } else if (event.key === "Enter" && activeIndex !== -1) {
+    } else if (event.key === "Enter") {
       event.preventDefault()
-      addGuess(filteredPlayers[activeIndex].Player)
-      setSearch("")
-      setActiveIndex(-1)
+      if (search !== "" && activeIndex !== -1) {
+        addGuess(filteredPlayers[activeIndex].Player)
+        setSearch("")
+        setActiveIndex(-1)
+      }
     }
   }
 
@@ -53,12 +63,6 @@ export const PlayerInput: React.FC<PlayerInputProps> = ({
     )
   }, [search, guesses])
 
-  const handleClick = (player: string) => {
-    console.log(`Selected player: ${player}`)
-    setSearch("")
-    setActiveIndex(-1)
-  }
-
   return (
     <div className="relative flex flex-col justify-center items-center m-3">
       <form className="w-72">
@@ -68,8 +72,11 @@ export const PlayerInput: React.FC<PlayerInputProps> = ({
             value={search}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            className="block w-full px-4 py-3 rounded-md placeholder-gray-300 text-gray-300 focus:outline-none focus:border focus:border-gray-500"
+            className={`block w-full px-4 py-3 rounded-md placeholder-gray-300 text-gray-300 focus:outline-none focus:border focus:border-gray-500 ${
+              didWin && "disabled cursor-not-allowed"
+            }`}
             placeholder="Enter player name"
+            disabled={didWin}
           />
           {search && filteredPlayers.length > 0 && (
             <ul className="absolute z-10 w-full border border-gray-400 rounded-md mt-2 overflow-y-auto max-h-52">
@@ -79,7 +86,6 @@ export const PlayerInput: React.FC<PlayerInputProps> = ({
                   className={`px-4 py-2 cursor-pointer ${
                     index === activeIndex ? "bg-slate-800" : "bg-[#242424]"
                   }`}
-                  onClick={() => handleClick(player.Player)}
                 >
                   {player.Player}
                 </li>
