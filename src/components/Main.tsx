@@ -33,7 +33,6 @@ export const Main: React.FC = () => {
         />
         <div className="w-1/2 flex flex-col items-center justify-center">
           {guesses.map((guess, i) => {
-            console.log(guess)
             return (
               <Guess
                 key={i}
