@@ -1,18 +1,8 @@
 import { players } from "../data/players"
 import { useState } from "react"
-import Guess from "./Guess"
+import { Guess } from "./Guess"
 import { PlayerInput } from "./PlayerInput"
 import { Player } from "../types"
-
-const getGuess = (): Player => {
-  const currentDate = new Date()
-  const year = currentDate.getFullYear()
-  const month = currentDate.getMonth()
-  const day = currentDate.getDate()
-  const seed = `${year}-${month}-${day}`
-  const randomNum = parseInt(seed.replace(/-/g, ""), 10) % players.length
-  return players[randomNum]
-}
 
 export const Main: React.FC = () => {
   const [guesses, setGuesses] = useState<Array<string>>([])
@@ -20,6 +10,16 @@ export const Main: React.FC = () => {
 
   const getPlayer = (player: string): Player => {
     return players.find((p) => p.Player === player)!
+  }
+
+  const getGuess = (): Player => {
+    const currentDate = new Date()
+    const year = currentDate.getFullYear()
+    const month = currentDate.getMonth()
+    const day = currentDate.getDate()
+    const seed = `${year}-${month}-${day}`
+    const randomNum = parseInt(seed.replace(/-/g, ""), 10) % players.length
+    return players[randomNum]
   }
 
   return (
@@ -40,7 +40,7 @@ export const Main: React.FC = () => {
           setDidWin={setDidWin}
         />
         <div className="flex flex-col items-center justify-center">
-          {guesses.map((guess, i) => {
+          {[...guesses].reverse().map((guess, i) => {
             return (
               <Guess
                 key={i}

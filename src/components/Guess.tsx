@@ -5,7 +5,7 @@ interface GuessProps {
   correctGuess: Player
 }
 
-const Guess: React.FC<GuessProps> = ({ player, correctGuess }) => {
+export const Guess: React.FC<GuessProps> = ({ player, correctGuess }) => {
   return (
     <>
       <div
@@ -79,5 +79,3 @@ const Guess: React.FC<GuessProps> = ({ player, correctGuess }) => {
     </>
   )
 }
-
-export default Guess
