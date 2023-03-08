@@ -4,13 +4,14 @@ import Guess from "./Guess"
 import { PlayerInput } from "./PlayerInput"
 import { Player } from "../types"
 
-const correctGuess = {
-  Player: "Hans Sama",
-  Name: "Steven Liv",
-  Age: 23,
-  Role: "Bot",
-  Team: "G2 Esports",
-  Country: "France",
+const getGuess = (): Player => {
+  const currentDate = new Date()
+  const year = currentDate.getFullYear()
+  const month = currentDate.getMonth()
+  const day = currentDate.getDate()
+  const seed = `${year}-${month}-${day}`
+  const randomNum = parseInt(seed.replace(/-/g, ""), 10) % players.length
+  return players[randomNum]
 }
 
 export const Main: React.FC = () => {
@@ -25,33 +26,26 @@ export const Main: React.FC = () => {
     <>
       {didWin && (
         <div className="flex flex-col items-center justify-center">
-          <p className="text-2xl text-green-500">You Win!</p>
-          <button
-            className="bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => {
-              setGuesses([])
-              setDidWin(false)
-            }}
-          >
-            Play Again
-          </button>
+          <p className="text-2xl text-green-500">
+            You won ! Come back tomorrow
+          </p>
         </div>
       )}
       <div className="flex flex-col items-center justify-center">
         <PlayerInput
           guesses={guesses}
           didWin={didWin}
-          correctGuess={correctGuess}
+          correctGuess={getGuess()}
           setGuesses={setGuesses}
           setDidWin={setDidWin}
         />
-        <div className="w-1/2 flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center">
           {guesses.map((guess, i) => {
             return (
               <Guess
                 key={i}
                 player={getPlayer(guess)}
-                correctGuess={correctGuess}
+                correctGuess={getGuess()}
               />
             )
           })}
