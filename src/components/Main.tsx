@@ -23,6 +23,20 @@ export const Main: React.FC = () => {
 
   return (
     <>
+      {didWin && (
+        <div className="flex flex-col items-center justify-center">
+          <p className="text-2xl text-green-500">You Win!</p>
+          <button
+            className="bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => {
+              setGuesses([])
+              setDidWin(false)
+            }}
+          >
+            Play Again
+          </button>
+        </div>
+      )}
       <div className="flex flex-col items-center justify-center">
         <PlayerInput
           guesses={guesses}
