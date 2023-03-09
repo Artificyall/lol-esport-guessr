@@ -1,16 +1,12 @@
 import { players } from "../data/players"
 import { useState } from "react"
-import { Guess } from "./Guess"
 import { PlayerInput } from "./PlayerInput"
 import { Player } from "../types"
+import { GuessList } from "./GuessList"
 
 export const Main: React.FC = () => {
   const [guesses, setGuesses] = useState<Array<string>>([])
   const [didWin, setDidWin] = useState<boolean>(false)
-
-  const getPlayer = (player: string): Player => {
-    return players.find((p) => p.Player === player)!
-  }
 
   const getGuess = (): Player => {
     const currentDate = new Date()
@@ -31,6 +27,13 @@ export const Main: React.FC = () => {
           </p>
         </div>
       )}
+      {guesses.length === 0 && (
+        <div className="flex flex-col items-center justify-center">
+          <p className="text-2xl text-white">
+            Enter a player name to start guessing
+          </p>
+        </div>
+      )}
       <div className="flex flex-col items-center justify-center">
         <PlayerInput
           guesses={guesses}
@@ -39,17 +42,7 @@ export const Main: React.FC = () => {
           setGuesses={setGuesses}
           setDidWin={setDidWin}
         />
-        <div className="flex flex-col items-center justify-center">
-          {[...guesses].reverse().map((guess, i) => {
-            return (
-              <Guess
-                key={i}
-                player={getPlayer(guess)}
-                correctGuess={getGuess()}
-              />
-            )
-          })}
-        </div>
+        <GuessList guesses={guesses} correctGuess={getGuess()} />
       </div>
     </>
   )
