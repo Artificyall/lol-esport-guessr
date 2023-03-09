@@ -25,16 +25,6 @@ export const Guess: React.FC<GuessProps> = ({ player, correctGuess }) => {
         <p>|</p>
         <p
           className={`${
-            player.Name === correctGuess.Name
-              ? "text-green-500"
-              : "text-red-500"
-          }`}
-        >
-          {player.Name}
-        </p>
-        <p>|</p>
-        <p
-          className={`${
             player.Age === correctGuess.Age ? "text-green-500" : "text-red-500"
           }`}
         >
