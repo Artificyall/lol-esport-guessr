@@ -13,8 +13,8 @@ export const Main: React.FC = () => {
     const year = currentDate.getFullYear()
     const month = currentDate.getMonth()
     const day = currentDate.getDate()
-    const seed = `${year}-${month}-${day}`
-    const randomNum = parseInt(seed.replace(/-/g, ""), 10) % players.length
+    const seed = `${year}${month}${day}`
+    const randomNum = parseInt(seed, 10) % players.length
     return players[randomNum]
   }
 
