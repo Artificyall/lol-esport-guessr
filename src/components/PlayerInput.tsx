@@ -83,9 +83,14 @@ export const PlayerInput: React.FC<PlayerInputProps> = ({
               {filteredPlayers.map((player, index) => (
                 <li
                   key={player.Player}
+                  onClick={() => {
+                    addGuess(player.Player)
+                    setSearch("")
+                    setActiveIndex(-1)
+                  }}
                   className={`px-4 py-2 cursor-pointer ${
-                    index === activeIndex ? "bg-slate-800" : "bg-[#242424]"
-                  }`}
+                    index === activeIndex ? "bg-zinc-700" : "bg-[#242424]"
+                  } hover:bg-zinc-700`}
                 >
                   {player.Player}
                 </li>
