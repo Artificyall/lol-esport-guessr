@@ -1,5 +1,5 @@
 import { Player } from "../types"
-import { Guess } from "./Guess"
+import { Guess } from "."
 import { players } from "../data/players"
 
 interface GuessListProps {

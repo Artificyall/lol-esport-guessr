@@ -1,8 +1,7 @@
-import { players } from "../data/players"
 import { useState } from "react"
-import { PlayerInput } from "./PlayerInput"
+import { PlayerInput, GuessList } from "."
 import { Player } from "../types"
-import { GuessList } from "./GuessList"
+import { players } from "../data/players"
 
 export const Main: React.FC = () => {
   const [guesses, setGuesses] = useState<Array<string>>([])

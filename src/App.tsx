@@ -1,4 +1,4 @@
-import { Main } from "./components/Main"
+import { Main } from "./components/"
 
 const App: React.FC = () => {
   return (
