@@ -90,7 +90,7 @@ export const PlayerInput: React.FC<PlayerInputProps> = ({
                   }}
                   className={`px-4 py-2 cursor-pointer ${
                     index === activeIndex ? "bg-zinc-700" : "bg-[#242424]"
-                  } hover:bg-zinc-700`}
+                  } border border-zinc-700 hover:border-gray-500`}
                 >
                   {player.Player}
                 </li>
